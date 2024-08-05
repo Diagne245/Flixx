@@ -118,7 +118,7 @@ const displayPopularContent = async (type) => {
   type === 'movie'
     ? (nowPlayingH2.innerText = 'Now Playing') &&
       (popularH2.innerText = 'Popular Movies')
-    : (nowPlayingH2.innerText = 'Now Playing') &&
+    : (nowPlayingH2.innerText = 'Trending TV Shows') &&
       (popularH2.innerText = 'Popular Tv Shows');
 
   clearBody(['now-playing', 'search', 'popular-section']);
