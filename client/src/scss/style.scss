@@ -197,6 +197,7 @@ section.now-playing {
 }
 
 section h2 {
+  text-wrap: nowrap;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
@@ -420,6 +421,10 @@ section h2 {
 
 // Media Queries-----------------
 @media (max-width: 768px) {
+  section.now-playing {
+    padding: 1.4rem;
+  }
+
   .search {
     padding: 3rem 0;
   }
