@@ -353,6 +353,10 @@ section h2 {
       border-radius: 5px;
       background: transparent;
       color: #fff;
+
+      &:focus {
+        border: 2px solid $color-secondary;
+      }
     }
 
     .search-input::placeholder {

@@ -4,7 +4,6 @@ import { createContentCard } from './home';
 
 // Variables ----------------
 const searchForm = document.querySelector('.search-form');
-const searchInput = searchForm.querySelector('input[name="search-term"]');
 
 const params = {
   type: '',
@@ -17,6 +16,8 @@ const params = {
 // Search Methods ---------------
 const search = async (e) => {
   e.preventDefault();
+
+  const searchInput = searchForm.querySelector('.search-input');
 
   if (searchInput.value === '' || searchInput.value === null) {
     showAlert('Please Enter a Search Term', 'alert error');
@@ -129,7 +130,7 @@ const showAlert = (message, className) => {
 
 const searchApiData = async () => {
   params.type = searchForm.querySelector('input[name="type"]:checked').value;
-  params.searchTerm = searchInput.value;
+  params.searchTerm = searchForm.querySelector('.search-input').value;
 
   if (params.searchTerm !== '' && params.searchTerm !== null) {
     showSpinner();

@@ -2,7 +2,7 @@ import Storage from './storage';
 import { highlightActiveLink, clearBody, fetchApiData } from '..';
 import { displayMovieDetails } from './movie-details';
 import { displayTvShowDetails } from './tv-details';
-import { searchInput } from './search';
+import { searchFormInner } from './search';
 
 // Implementing Swiper----------------------
 const displaySlider = async (type) => {
@@ -108,11 +108,7 @@ const createContentCard = (type, content) => {
   return cardDiv;
 };
 
-const displayPopularContent = async (type) => {
-  highlightActiveLink(type);
-
-  displaySlider(type);
-
+const displaySectionTitle = (type) => {
   const nowPlayingH2 = document.querySelector('.now-playing h2');
   const popularH2 = document.querySelector('#popular-section h2');
   type === 'movie'
@@ -120,10 +116,24 @@ const displayPopularContent = async (type) => {
       (popularH2.innerText = 'Popular Movies')
     : (nowPlayingH2.innerText = 'Trending TV Shows') &&
       (popularH2.innerText = 'Popular Tv Shows');
+};
 
+// ----------------
+const searchForm = document.querySelector('.search-form');
+const loadSearchForm = () => {
+  searchForm.innerHTML = searchFormInner;
+};
+
+// -----------------
+const displayPopularContent = async (type) => {
+  highlightActiveLink(type);
+
+  displaySlider(type);
+
+  displaySectionTitle();
   clearBody(['now-playing', 'search', 'popular-section']);
-  searchInput.value = '';
-  searchInput.blur();
+
+  loadSearchForm();
   popularDiv.innerHTML = '';
 
   const { results } = await fetchApiData(`${type}/popular`);

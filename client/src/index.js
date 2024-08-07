@@ -5,21 +5,15 @@ import { displayPopularContent } from './js/home';
 import { search } from './js/search';
 import { displayMovieDetails } from './js/movie-details';
 import { displayTvShowDetails } from './js/tv-details';
+import { headerInner, footerInner } from './js/baseHTML';
 
-// ------------------
+// ----------------
 const header = document.querySelector('.main-header');
-const searchRadio = document.querySelector('.search-radio');
 const footer = document.querySelector('.main-footer');
 
-const hideHtmlElementsAtLoad = () => {
-  header.querySelector('.logo button').innerText = 'FLIXX';
-  header.querySelector('.movies-nav-link').innerText = 'Movies';
-  header.querySelector('.shows-nav-link').innerText = 'TV Shows';
-
-  searchRadio.querySelector('label[for="movie"]').innerText = 'Movies';
-  searchRadio.querySelector('label[for="tv"]').innerText = 'TV Shows';
-
-  footer.querySelector('.logo button').innerText = 'FLIXX';
+const loadBaseHtml = () => {
+  header.innerHTML = headerInner;
+  footer.innerHTML = footerInner;
 };
 
 // ----------------------
@@ -79,7 +73,7 @@ function hideSpinner() {
 // --------------
 
 const reloadCurrentPage = async () => {
-  hideHtmlElementsAtLoad();
+  loadBaseHtml();
 
   switch (Storage.getCurrentPage()) {
     case 'movie':
